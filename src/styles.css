@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+
+.appBackground{
+    background-color: lightblue; 
+}
+
+.form-control{
+    display: unset;
+    width: 30%;
+}
+
+form{
+    position: relative;
+    width: 70%;
+    text-align: left;
+    margin-left: 80px;
+   }
+
+   .validationMessages{
+    color: rgb(202, 43, 43);
+    font-size: 10pt;
+  }
+  .successFailureInfo{
+    color: brown;
+    padding-bottom: 10px;
+  }
+   
+
+.form-inline label{
+   justify-content: left;
+ }
+   
+ .btn-success{
+   background-color: blue;
+   color: aliceblue;
+   border-color:  blue;
+   
+ }
+
+ .pad200{
+   padding-left: 200px;
+   padding-bottom: 30px;
+ }

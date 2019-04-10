@@ -1,0 +1,21 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<link rel="stylesheet" src="../app/app.component.css">  
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Employee Management
+  </h1>
+  <h4 style="color: gray">
+      Open book assignment submitted by Mahalakshmi
+  </h4>
+  
+</div>
+
+
+<div *ngFor="let link of navLinks" class="tab-holder">
+<button [routerLink]="link.path" class="mat-tab-link-display">{{link.label}}</button>   
+</div>
+<hr>  
+<router-outlet ></router-outlet>

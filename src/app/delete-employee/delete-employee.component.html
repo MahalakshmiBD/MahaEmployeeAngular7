@@ -1,0 +1,56 @@
+<h4 class="subPageHeading">Delete Existing Employee</h4>
+<hr class="lineUnderHeading">
+
+    <div class="successFailureInfo"  *ngIf="message">
+        <h5> {{message}} </h5>
+    </div>  
+  <form  [formGroup]="readForm"  #f="ngForm" novalidate (ngSubmit)="readEmployee()" > 
+    <div class="col-md-12 form-group form-inline">
+      <label class= "col-sm-2 col-form-label" for="empId">Employee Id:</label>
+        <input type="empId" formControlName="empId" name="empId" class="form-control" id="empId"/>
+      </div>
+      
+      
+      <div class="form-control-feedback validationMessages"  *ngIf="readForm.controls.empId.errors && 
+      (submitted || readForm.controls.empId.dirty || readForm.controls.empId.touched)">
+        <p *ngIf="readForm.controls.empId.errors.required">
+          Please enter employee id to read.
+        </p>
+    </div>
+  
+      <div class="pad200"> 
+        <button class="btn btn-success" >Read</button>
+    </div>
+    </form>
+      <div ng-controller="readEmployee">
+          <div *ngIf="employeePresent">
+              <div class="col-md-12 form-group form-inline">
+                  <label class= "col-sm-2 col-form-label">First Name :</label> 
+                  <input [(ngModel)]="user.firstName" 
+            name="firstName" class="form-control" id="firstName" disabled="true"></div>
+            <div class="col-md-12 form-group form-inline">
+                <label class= "col-sm-2 col-form-label"> SurName </label>
+                 <input [(ngModel)]="user.surname" placeholder="Surname" 
+            name="surname" class="form-control" id="surname" disabled="true"></div>
+            <div class="col-md-12 form-group form-inline">
+                <label class= "col-sm-2 col-form-label">Email :</label>
+                 <input [(ngModel)]="user.email" placeholder="Email" 
+            name="email" class="form-control" id="email" disabled="true"></div>
+            <div class="col-md-12 form-group form-inline">
+                <label class= "col-sm-2 col-form-label">Date of birth : </label>
+                 <input [(ngModel)]="user.dob" placeholder="Dob" 
+            name="dob" class="form-control" id="dob" disabled="true" ></div>
+            <div class="col-md-12 form-group form-inline">
+                <label class= "col-sm-2 col-form-label">gender : </label>
+                  <input type="radio" value="M" name="gender" 
+            [(ngModel)]="user.gender" class="form-control" disabled="true"> Male&nbsp;
+             <input type="radio" value="F" name="gender" 
+             [(ngModel)]="user.gender" class="form-control" disabled="true"> &nbsp;Female</div>
+          <p>  <input [(ngModel)]="user.id" placeholder="Id" 
+            name="id" class="form-control" id="id" hidden="true"></p>    
+         
+            <div class="pad200"> 
+              <button class="btn btn-success" (click)="deleteEmployee()">Delete</button>  
+            </div>
+            </div> 
+    

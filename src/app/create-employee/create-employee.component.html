@@ -1,0 +1,76 @@
+  
+    <h4 class="subPageHeading">Create New Employee</h4>
+    <hr class="lineUnderHeading">
+  
+    <div class="successFailureInfo"  *ngIf="message">
+       <h5> {{message}} </h5>
+    </div>   
+    
+    <form  [formGroup]="employeeForm" #f="ngForm" novalidate (ngSubmit)="createEmployee()" > 
+    <div class="col-md-12 form-group form-inline" >
+          <label class= "col-sm-2 col-form-label" for="firstName">First Name:</label>
+          <input type="text"   class="form-control" name="firstName" formControlName="firstName" 
+           [ngClass]="{ 'is-invalid': employeeForm.controls.firstName.errors}"   />   
+          </div>
+          
+      <div class="form-control-feedback validationMessages"
+           *ngIf="employeeForm.controls.firstName.errors && 
+           (submitted || employeeForm.controls.firstName.dirty || employeeForm.controls.firstName.touched)">
+        <p *ngIf="employeeForm.controls.firstName.errors.required">First Name is required</p>
+      </div>
+
+
+  
+  <div class="col-md-12 form-group form-inline ">      
+    <label class= "col-sm-2 col-form-label" for="surname">SurName</label>    
+        <input formControlName="surname" name="surname" class="form-control" id="surname">
+      </div>
+  
+      <div class="form-control-feedback validationMessages"
+           *ngIf="employeeForm.controls.surname.errors && 
+           (submitted || employeeForm.controls.surname.dirty || employeeForm.controls.surname.touched)">
+        <p *ngIf="employeeForm.controls.surname.errors.required">SurName is required</p>
+      </div>
+
+      <div class="col-md-12 form-group form-inline ">
+        <label class= "col-sm-2 col-form-label" for="email">Email</label>
+        <input type="email"  formControlName="email" name="email" class="form-control" id="email">
+      </div>
+      
+      <div class="form-control-feedback validationMessages"
+           *ngIf="employeeForm.controls.email.errors && 
+           (submitted || employeeForm.controls.email.dirty || employeeForm.controls.email.touched)">
+        <p *ngIf="employeeForm.get('email').status=='INVALID'">Provide valid Email id</p>
+      </div>
+
+      <div class="col-md-12 form-group form-inline">
+        <label class= "col-sm-2 col-form-label" for="dob">Date of Birth</label>
+        <input  type="date"  formControlName="dob" name="dob" class="form-control" id="dob" >
+      </div>
+  
+      <div class="form-control-feedback validationMessages"
+           *ngIf="employeeForm.controls.dob.errors && 
+           (submitted || employeeForm.controls.dob.dirty || employeeForm.controls.dob.touched)">
+        <p *ngIf="employeeForm.controls.dob.errors.required">Please provide valid Date of birth</p>
+      </div>
+
+      <div class="col-md-12 form-group form-inline">
+        <label class= "col-sm-2 col-form-label" for="gender">Gender&nbsp;</label>
+        <input type="radio" value="M" name="gender" 
+        formControlName="gender" class="form-control"> &nbsp;Male&nbsp;&nbsp;
+         <input type="radio" value="F" name="gender" 
+         formControlName="gender" class="form-control"> &nbsp;Female
+      </div>
+      
+      <div class="form-control-feedback validationMessages"
+           *ngIf="employeeForm.controls.gender.errors && (submitted ||
+           employeeForm.controls.gender.dirty || employeeForm.controls.gender.touched)">
+        <p *ngIf="employeeForm.controls.gender.errors.required">Gender is required</p>
+      </div>
+    
+    <div class=" form-group pad200">
+    <button  class="btn btn-success">Create</button>
+  </div>
+  </form>
+  
+  

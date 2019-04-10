@@ -1,0 +1,32 @@
+form{
+    position: relative;
+    width: 70%;
+    text-align: left;
+    margin-left: 80px;
+   }
+   
+
+.form-inline label{
+   justify-content: left;
+ }
+   
+ .btn-success{
+   background-color: blue;
+   color: aliceblue;
+   border-color:  blue; 
+ }
+
+ .pad200{
+   padding-left: 200px;
+ }
+
+ .subPageHeading{    
+  padding-left: 100px;padding-bottom: 5px;
+  
+  }
+
+.lineUnderHeading{
+  margin-inline-start: 30px;
+  margin-inline-end: 900px;
+}
+

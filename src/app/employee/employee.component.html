@@ -1,0 +1,28 @@
+<div class="moveRight">
+<h2 >Employees List</h2>
+
+<table border="1">
+  <thead></thead>
+  <tr>
+    <th>Employee Id</th>
+    <th>First Name</th>
+    <th>SurName</th>
+    <th>Email</th>
+    <th>Date of birth</th>
+    <th>Gender</th>
+    </tr>
+  
+  <tbody>
+      <tr *ngFor="let employee of employees">
+          <td>{{employee.id}}</td>
+          <td>{{employee.firstName}}</td>
+          <td>{{employee.surname}}</td>
+          <td>{{employee.email}}</td>
+          <td>{{employee.dob}}</td>
+          <td>{{employee.gender}}</td>
+       </tr>
+  </tbody>
+    </table>
+
+    
+  </div>

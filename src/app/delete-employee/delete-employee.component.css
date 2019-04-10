@@ -1,0 +1,16 @@
+.subPageHeading{    
+    padding-left: 100px;padding-bottom: 10px;
+    }   
+
+    hr {
+      border: 1;
+      clear:both;
+      display:block;                  
+      background-color: lightgrey;
+      height: 1px;  
+    }
+    .lineUnderHeading{
+      margin-inline-start: 30px;
+      margin-inline-end: 900px;
+    }
+    
