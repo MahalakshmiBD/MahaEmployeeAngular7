@@ -60,7 +60,11 @@ export class CreateEmployeeComponent implements OnInit {
   handleSuccessfulResponse(response)
   {
    this.user=response;
-   this.message = this.user.message+" with Employee ID "+this.user.id;
+    if(this.user.id !=0 ){
+      this.message = this.user.message+" with Employee ID "+this.user.id;
+    }else{
+      this.message = this.user.message;
+    }
   }  
 
   dateValidator(control : AbstractControl) :{ [key: string]: boolean }  {
