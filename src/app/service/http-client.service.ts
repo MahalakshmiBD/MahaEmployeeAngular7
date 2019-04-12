@@ -24,31 +24,37 @@ export class Employee{
   providedIn: 'root'
 })
 export class HttpClientService {
+  
+  serverRunningPort: String;
+  
 
   constructor(
     private httpClient:HttpClient   
-  ) { }
+  ) { 
+    this.serverRunningPort = "http://127.0.0.1:7376/";
+  }
+
 
   public getEmployees()
   {
     console.log("test call");
-    return this.httpClient.get<Employee>('http://127.0.0.1:7376/employees');
+    return this.httpClient.get<Employee>(this.serverRunningPort+"employees");
   }
 
   public deleteEmployee(id) {
-    return this.httpClient.delete<Employee>("http://127.0.0.1:7376/deleteEmployee" + "/"+ id);
+    return this.httpClient.delete<Employee>(this.serverRunningPort+"deleteEmployee" + "/"+ id);
   }
 
   public createEmployee(employee) {
-    return this.httpClient.post<Employee>("http://127.0.0.1:7376/createEmployee", employee);
+    return this.httpClient.post<Employee>(this.serverRunningPort+"createEmployee", employee);
   }
 
   public updateEmployee(id,employee) {
-    return this.httpClient.put<Employee>("http://127.0.0.1:7376/updateEmployee"+ "/"+ id, employee);
+    return this.httpClient.put<Employee>(this.serverRunningPort+"updateEmployee"+ "/"+ id, employee);
   }
 
   public readEmployee(id) {
-    return this.httpClient.get<Employee>("http://127.0.0.1:7376/readEmployee" + "/"+ id);
+    return this.httpClient.get<Employee>(this.serverRunningPort+"readEmployee" + "/"+ id);
   }
 
 

@@ -28,8 +28,7 @@
         <form  [formGroup]="employeeForm" #f="ngForm" novalidate (ngSubmit)="updateEmployee()" > 
           <div class="col-md-12 form-group form-inline" >
                 <label class= "col-sm-2 col-form-label" for="firstName">First Name:</label>
-                <input type="text"   class="form-control" name="firstName" formControlName="firstName" 
-                 [ngClass]="{ 'is-invalid': employeeForm.controls.firstName.errors}"   />              
+                <input type="text"   class="form-control" name="firstName" formControlName="firstName" />              
             </div>
                 
             <div class="form-control-feedback validationMessages"
