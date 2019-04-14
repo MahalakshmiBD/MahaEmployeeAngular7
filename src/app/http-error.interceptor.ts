@@ -15,8 +15,13 @@ import {
         .pipe(
           retry(1),
           catchError((error: HttpErrorResponse) => {
-            let errorMessage = '';            
+            let errorMessage = '';  
+            if (error.error.message == null) {
+              // client-side error
+              errorMessage = `Error: ${error.message}`;
+            } else   {      
             errorMessage = `Error Code: ${error.error.errorCode}\nMessage: ${error.error.errorMessage}`;            
+            }
             window.alert(errorMessage);
             return throwError(errorMessage);
           })
