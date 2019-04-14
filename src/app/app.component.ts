@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment'; 
+
 
 @Component({
   selector: 'app-root',

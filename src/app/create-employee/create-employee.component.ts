@@ -1,33 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, Employee } from '../service/http-client.service';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms'; 
+import { DatePipe } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
-  styleUrls: ['./create-employee.component.css']  
+  styleUrls: ['./create-employee.component.css']
+
 })
 export class CreateEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   submitted = false;
   user: Employee;
   message : String;
+  dobPattern =/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+  
+  
 
   constructor(
     private httpClientService: HttpClientService ,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder  
+
   ) { } 
 
-    
+  
+  
+  
 
-  ngOnInit() {    
+  ngOnInit() {  
     this.employeeForm = this.formBuilder.group({
       firstName: ['', Validators.required,],
       surname: ['', Validators.required],
       email: ['', Validators.email, ],
-      dob: ['', Validators.required,],
+      dob: ['', [Validators.required,Validators.pattern(this.dobPattern),this.dateValidator]],
       gender: ['', Validators.required]})
   }
 
@@ -67,12 +75,13 @@ export class CreateEmployeeComponent implements OnInit {
     }
   }  
 
-  dateValidator(control : AbstractControl) :{ [key: string]: boolean }  {
-    let datePattern = /^\[0-9]{2}\/\[0-9]{2}\/[0-9]{4}$/; 
-    if (!control.value.match(datePattern))
-      return { "datePattern": true };    
-    return  { "datePattern": false };
+  dateValidator(control : AbstractControl) :{ [key: string]: boolean }  {     
+    var dateString = control.value;
+    var myDate = new Date(dateString);
+    var today = new Date();
+    if ( myDate > today ) 
+      return { "incorrectDob": true };    
+    return  null;
   } 
 
   }
-

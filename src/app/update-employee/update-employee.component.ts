@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService,Employee } from '../service/http-client.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-update-employee',
@@ -16,7 +16,7 @@ export class UpdateEmployeeComponent implements OnInit {
   user: Employee;
   submittedId : String;
   message : string;
-
+  dobPattern =/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
   constructor(
     private httpClientService: HttpClientService,
     private formBuilder: FormBuilder
@@ -47,7 +47,7 @@ export class UpdateEmployeeComponent implements OnInit {
         firstName: [this.user.firstName, Validators.required,],
         surname: [this.user.surname, Validators.required],
         email: [this.user.email, Validators.email, ],
-        dob: [this.user.dob, Validators.required],
+        dob: [this.user.dob, [Validators.required,Validators.pattern(this.dobPattern),this.dateValidator]],
         gender: [this.user.gender, Validators.required]})
     }else if(this.user.id == 0){
       this.employeePresent = false;
@@ -88,5 +88,14 @@ handleSuccessfulUpdateResponse(response)
     this.submitted =false;
     this.submittedUpdate = false;
   }
+
+  dateValidator(control : AbstractControl) :{ [key: string]: boolean }  {     
+    var dateString = control.value;
+    var myDate = new Date(dateString);
+    var today = new Date(); 
+    if ( myDate > today ) 
+      return { "incorrectDob": true };    
+    return  null;
+  } 
 
 }

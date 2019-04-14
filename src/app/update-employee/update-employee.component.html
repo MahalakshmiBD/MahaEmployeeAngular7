@@ -62,14 +62,17 @@
       
             <div class="col-md-12 form-group form-inline">
               <label class= "col-sm-2 col-form-label" for="dob">Date of Birth</label>
-              <input  type="date"  formControlName="dob" name="dob" class="form-control" id="dob" >
-            </div>
-        
-            <div class="form-control-feedback validationMessages"
-                 *ngIf="employeeForm.controls.dob.errors && 
-                 (submitted || employeeForm.controls.dob.dirty || employeeForm.controls.dob.touched)">
-              <p *ngIf="employeeForm.controls.dob.errors.required">Please provide valid Date of birth</p>
-            </div>
+              <input type="text" formControlName="dob" name= "dob" class="form-control" id="dob"
+        placeholder="yyyy-MM-dd" maxlength="10" minlength="10">  </div>
+
+  
+      <div class="form-control-feedback validationMessages"
+           *ngIf="employeeForm.controls.dob.errors && 
+           (submitted || employeeForm.controls.dob.dirty || employeeForm.controls.dob.touched)">
+        <p *ngIf="employeeForm.controls.dob.errors.required">Date of birth is required</p>
+        <p *ngIf="employeeForm.controls.dob.errors.pattern">Please provide valid Date of birth in (yyyy-MM-dd) pattern</p>
+        <p *ngIf="employeeForm.controls.dob.errors.incorrectDob">Date of birth cannot be a future date</p>
+      </div>
       
             <div class="col-md-12 form-group form-inline">
               <label class= "col-sm-2 col-form-label" for="gender">Gender&nbsp;</label>
