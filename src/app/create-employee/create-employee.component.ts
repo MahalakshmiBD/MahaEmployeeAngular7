@@ -78,7 +78,7 @@ export class CreateEmployeeComponent implements OnInit {
   dateValidator(control : AbstractControl) :{ [key: string]: boolean }  {     
     var dateString = control.value;
     var myDate = new Date(dateString);
-    var today = new Date();
+    var today = new Date(); 
     if ( myDate > today ) 
       return { "incorrectDob": true };    
     return  null;
